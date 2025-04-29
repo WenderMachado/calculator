@@ -37,9 +37,28 @@ input.addEventListener('keydown', (ev)=>{
 })
 
 function calculate(){
+  resultInput.value = "ERROR"
+  resultInput.classList.add('error')
+
   const result = eval(input.value)
+  
   resultInput.value = result
+  resultInput.classList.remove('error')
 }
+
+document.getElementById('copyToClipboard').addEventListener('click',(ev)=>{
+  const btn = ev.currentTarget
+  if(btn.innerText === 'Copy'){
+    btn.innerText = "Copied!"
+    btn.classList.add('success')
+    navigator.clipboard.writeText(resultInput.value)
+  }else{
+    btn.innerText = "Copy"
+    btn.classList.remove('success')
+  }
+})
+
+
 
 document.getElementById('themeSwitcher').addEventListener('click', () =>{
   if(main.dataset.theme === "dark"){
@@ -56,3 +75,4 @@ document.getElementById('themeSwitcher').addEventListener('click', () =>{
     main.dataset.theme = "dark"
   }
 })
+
