@@ -1,7 +1,7 @@
 const main = document.querySelector('main')
 const root = document.querySelector(':root')
 const input = document.querySelector('input')
-const result = document.getElementById('result')
+const resultInput = document.getElementById('result')
 
 
 const allowedKeys = ["(", ")", "/", "*", "-", "+", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0", ".", "%", " "]
@@ -37,5 +37,6 @@ input.addEventListener('keydown', (ev)=>{
 })
 
 function calculate(){
-  console.log('calculado')
+  const result = eval(input.value)
+  resultInput.value = result
 }
